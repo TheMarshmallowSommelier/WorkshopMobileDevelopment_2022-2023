@@ -9,15 +9,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WorkshopMobileDevelopment"
+        android:theme="@style/Theme.Perkeret"
         tools:targetApi="31">
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:exported="true">
         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
