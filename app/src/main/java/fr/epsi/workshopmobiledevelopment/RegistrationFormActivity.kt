@@ -1,6 +1,7 @@
 package fr.epsi.workshopmobiledevelopment
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,8 @@ class RegistrationFormActivity : BaseActivity() {
         setContentView(R.layout.activity_registration)
         setHeaderTxt("Création de compte")
         showBack()
+
+        preferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
         // Récupération des données de l'intent
         val firstName = intent.getStringExtra("firstName")
@@ -76,6 +79,15 @@ class RegistrationFormActivity : BaseActivity() {
             editor.apply()
 
             Toast.makeText(this, "Compte créé avec succès", Toast.LENGTH_SHORT).show()
+            val profileIntent = Intent(this, ProfileActivity::class.java)
+            profileIntent.putExtra("firstName", firstName)
+            profileIntent.putExtra("lastName", lastName)
+            profileIntent.putExtra("email", email)
+            profileIntent.putExtra("address", address)
+            profileIntent.putExtra("zipcode", zipcode)
+            profileIntent.putExtra("city", city)
+            profileIntent.putExtra("cardRef", cardRef)
+            startActivity(profileIntent)
             finish()
 
         } else {
