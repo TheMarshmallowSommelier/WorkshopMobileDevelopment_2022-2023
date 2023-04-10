@@ -18,18 +18,26 @@ class HomeActivity : BaseActivity() {
 
         val preferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         // CLEAR PREFERENCES
-        // val editor = preferences.edit()
-        // editor.clear()
-        // editor.apply()
+        /*val editor = preferences.edit()
+        editor.clear()
+        editor.apply()*/
         val firstName = preferences.getString("firstName", null)
         val lastName = preferences.getString("lastName", null)
         val email = preferences.getString("email", null)
+        val address = preferences.getString("address", null)
+        val zipcode = preferences.getString("zipcode", null)
+        val city = preferences.getString("city", null)
+        val cardRef = preferences.getString("cardRef", null)
 
         if (firstName != null && lastName != null && email != null) {
             val intent = Intent(this, ProfileActivity::class.java)
             intent.putExtra("firstName", firstName)
             intent.putExtra("lastName", lastName)
             intent.putExtra("email", email)
+            intent.putExtra("address", address)
+            intent.putExtra("zipcode", zipcode)
+            intent.putExtra("city", city)
+            intent.putExtra("cardRef", cardRef)
             startActivity(intent)
             finish()
         }

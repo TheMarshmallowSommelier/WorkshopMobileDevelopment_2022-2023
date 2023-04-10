@@ -52,4 +52,14 @@ open class BaseActivity : AppCompatActivity() {
         })
     }
 
+    fun showLogo(){
+        val imageViewBack=findViewById<ImageView>(R.id.imageLogo)
+        imageViewBack.visibility= View.VISIBLE
+    }
+
+    fun showUserIcon(){
+        val imageViewBack=findViewById<ImageView>(R.id.imageUserIcon)
+        imageViewBack.visibility= View.VISIBLE
+    }
+
 }
