@@ -12,4 +12,74 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/edit_text_firstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Prénom"
+                android:inputType="textPersonName"/>
+
+            <EditText
+                android:id="@+id/edit_text_lastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nom"
+                android:inputType="textPersonName"/>
+
+            <EditText
+                android:id="@+id/edit_text_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Adresse email"
+                android:inputType="textEmailAddress"/>
+
+            <EditText
+                android:id="@+id/edit_text_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Adresse"
+                android:inputType="textPostalAddress"/>
+
+            <EditText
+                android:id="@+id/edit_text_zipcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Code postal"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/edit_text_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ville"
+                android:inputType="text"/>
+
+            <EditText
+                android:id="@+id/edit_text_cardRef"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Carte de fidélité"
+                android:inputType="text"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Créer"
+                android:onClick="onCreateAccountButtonClicked"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </LinearLayout>
