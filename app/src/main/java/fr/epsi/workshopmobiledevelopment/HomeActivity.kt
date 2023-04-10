@@ -16,8 +16,8 @@ class HomeActivity : BaseActivity() {
         val qr_code = findViewById<ImageButton>(R.id.qr_code)
 
         registration.setOnClickListener(View.OnClickListener {
-            val intent = Intent(application, RegistrationFormActivity::class.java)
-            startActivity(intent)
+            val registrationFormIntent = Intent(this, RegistrationFormActivity::class.java)
+            startActivity(registrationFormIntent)
         })
 
         qr_code.setOnClickListener(View.OnClickListener {
