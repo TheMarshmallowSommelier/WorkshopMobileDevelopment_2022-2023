@@ -15,6 +15,12 @@
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
+            android:name=".QrCodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrationFormActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
         <intent-filter>

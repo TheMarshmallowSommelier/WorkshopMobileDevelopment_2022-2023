@@ -20,6 +20,7 @@
         android:gravity="center">
 
         <ImageButton
+            android:id="@+id/qr_code"
             android:layout_width="350dp"
             android:layout_height="150dp"
             android:background="@color/blue"
@@ -29,6 +30,7 @@
             android:paddingBottom="8dp" />
 
         <Button
+            android:id="@+id/registration"
             android:layout_width="350dp"
             android:layout_height="150dp"
             android:text="Remplir le formulaire manuellement" />
