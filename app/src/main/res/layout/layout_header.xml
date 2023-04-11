@@ -10,6 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="60dp">
 
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"/>
+
         <ImageView
             android:id="@+id/imageViewBack"
             android:visibility="gone"
@@ -40,17 +51,6 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"/>
-
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_toStartOf="@id/imageUserIcon"
-            android:layout_toEndOf="@id/imageLogo"/>
 
     </RelativeLayout>
 
