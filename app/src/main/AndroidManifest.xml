@@ -14,19 +14,17 @@
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
+        <activity android:name=".MainActivity"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAdwxyyyZSkEgW97DZxS6ev2KRpruYeTlQ" />
+
         <activity
             android:name=".QrCodeActivity"
             android:exported="false" />
         <activity
             android:name=".RegistrationFormActivity"
             android:exported="false" />
-        <activity
-            android:name=".ProfileActivity"
-            android:parentActivityName=".RegistrationFormActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".RegistrationFormActivity" />
-        </activity>
         <activity
             android:name=".SplashActivity"
             android:exported="true">

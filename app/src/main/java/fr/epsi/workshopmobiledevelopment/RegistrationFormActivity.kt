@@ -79,7 +79,7 @@ class RegistrationFormActivity : BaseActivity() {
             editor.apply()
 
             Toast.makeText(this, "Compte créé avec succès", Toast.LENGTH_SHORT).show()
-            val profileIntent = Intent(this, ProfileActivity::class.java)
+            val profileIntent = Intent(this, MainActivity::class.java)
             profileIntent.putExtra("firstName", firstName)
             profileIntent.putExtra("lastName", lastName)
             profileIntent.putExtra("email", email)

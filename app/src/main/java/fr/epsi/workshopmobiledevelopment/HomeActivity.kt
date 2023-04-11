@@ -30,7 +30,7 @@ class HomeActivity : BaseActivity() {
         val cardRef = preferences.getString("cardRef", null)
 
         if (firstName != null && lastName != null && email != null) {
-            val intent = Intent(this, ProfileActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("firstName", firstName)
             intent.putExtra("lastName", lastName)
             intent.putExtra("email", email)
