@@ -1,33 +1,32 @@
-package fr.epsi.workshopmobiledevelopment
-
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.WriterException
+import com.google.zxing.common.BitMatrix
+import com.google.zxing.integration.android.IntentIntegrator
+import com.google.zxing.integration.android.IntentResult
+import fr.epsi.workshopmobiledevelopment.R
 
 class ProfileFragment : Fragment() {
-    private lateinit var firstNameTextView: TextView
-    private lateinit var lastNameTextView: TextView
-    private lateinit var emailTextView: TextView
-    private lateinit var addressTextView: TextView
-    private lateinit var zipcodeTextView: TextView
-    private lateinit var cityTextView: TextView
+    private lateinit var fullNameTextView: TextView
     private lateinit var cardRefTextView: TextView
+    private lateinit var cardRefBarcodeImageView: ImageView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        firstNameTextView = view.findViewById(R.id.first_name_text_view)
-        lastNameTextView = view.findViewById(R.id.last_name_text_view)
-        emailTextView = view.findViewById(R.id.email_text_view)
-        addressTextView = view.findViewById(R.id.address_text_view)
-        zipcodeTextView = view.findViewById(R.id.zipcode_text_view)
-        cityTextView = view.findViewById(R.id.city_text_view)
+        fullNameTextView = view.findViewById(R.id.full_name_text_view)
         cardRefTextView = view.findViewById(R.id.card_ref_text_view)
+        cardRefBarcodeImageView = view.findViewById(R.id.card_ref_barcode_image_view)
 
         displayProfile()
 
@@ -38,20 +37,33 @@ class ProfileFragment : Fragment() {
         val preferences = context?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val firstName = preferences?.getString("firstName", null)
         val lastName = preferences?.getString("lastName", null)
-        val email = preferences?.getString("email", null)
-        val address = preferences?.getString("address", null)
-        val zipcode = preferences?.getString("zipcode", null)
-        val city = preferences?.getString("city", null)
+        val fullName = "$firstName $lastName"
         val cardRef = preferences?.getString("cardRef", null)
 
-        if (firstName != null && lastName != null && email != null) {
-            firstNameTextView.text = firstName
-            lastNameTextView.text = lastName
-            emailTextView.text = email
-            addressTextView.text = address
-            zipcodeTextView.text = zipcode
-            cityTextView.text = city
+        if (fullName != null) {
+            fullNameTextView.text = fullName
+        }
+
+        if (cardRef != null) {
             cardRefTextView.text = cardRef
+            generateBarcode(cardRef)
+        }
+    }
+
+    private fun generateBarcode(cardRef: String) {
+        try {
+            val bitMatrix: BitMatrix = MultiFormatWriter().encode(cardRef, BarcodeFormat.CODE_128, 800, 200, null)
+            val width = bitMatrix.width
+            val height = bitMatrix.height
+            val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+            for (x in 0 until width) {
+                for (y in 0 until height) {
+                    bitmap.setPixel(x, y, if (bitMatrix[x, y]) Color.BLACK else Color.WHITE)
+                }
+            }
+            cardRefBarcodeImageView.setImageBitmap(bitmap)
+        } catch (e: WriterException) {
+            e.printStackTrace()
         }
     }
 }
