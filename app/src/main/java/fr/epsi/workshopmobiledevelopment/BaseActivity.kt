@@ -57,9 +57,4 @@ open class BaseActivity : AppCompatActivity() {
         imageViewBack.visibility= View.VISIBLE
     }
 
-    fun showUserIcon(){
-        val imageViewBack=findViewById<ImageView>(R.id.imageUserIcon)
-        imageViewBack.visibility= View.VISIBLE
-    }
-
 }

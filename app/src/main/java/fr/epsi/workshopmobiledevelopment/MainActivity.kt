@@ -1,7 +1,10 @@
 package fr.epsi.workshopmobiledevelopment
 
 import ProfileFragment
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -15,18 +18,24 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         showLogo()
-        showUserIcon()
+
+        val showUserIcon = findViewById<ImageView>(R.id.imageUserIcon)
+        showUserIcon.visibility= View.VISIBLE
+        showUserIcon.setOnClickListener {
+            val intent = Intent(this, AccountActivity::class.java)
+            startActivity(intent)
+        }
 
         // Récupération du ViewPager et du TabLayout
         val viewPager = findViewById<ViewPager>(R.id.view_pager)
         val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
 
 
-// Couleurs du texte pour les onglets actifs et inactifs
+        // Couleurs du texte pour les onglets actifs et inactifs
         val tabTextInactiveColor = resources.getColor(R.color.red)
         val tabTextActiveColor = resources.getColor(android.R.color.white)
 
-// Appliquer les couleurs aux onglets
+        // Appliquer les couleurs aux onglets
         tabLayout.setTabTextColors(tabTextInactiveColor, tabTextActiveColor)
 
         // Création de l'adapter pour les fragments
